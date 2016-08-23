@@ -1,0 +1,31 @@
+group 'org.herbst'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+if (file('publish.gradle').exists()) {
+    apply from: 'publish.gradle'
+}
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'org.hibernate:hibernate-validator:5.2.4.Final'
+    compile 'javax.el:javax.el-api:2.2.5' //Нужна для hibernate-validator
+
+    compile 'org.hibernate:hibernate-ehcache:5.1.0.Final'
+
+    compile 'org.hibernate:hibernate-c3p0:5.1.0.Final' //Промышленный пул коннектов
+    compile 'com.mchange:c3p0:0.9.5.2' //Нужна более новая зависимость для hibernate-c3p0 (иначе ломается LongArrayUserType)
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.hsqldb:hsqldb:2.3.3'
+}
+

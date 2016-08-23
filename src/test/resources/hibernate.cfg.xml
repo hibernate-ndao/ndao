@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.pool_size">10</property>
+
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="current_session_context_class">thread</property>
+
+        <property name="hibernate.c3p0.min_size">5</property><!--минимальный размер пула-->
+        <property name="hibernate.c3p0.max_size">20</property><!--максимальное количество соединений в пуле-->
+        <property name="hibernate.c3p0.timeout">300</property><!--таймаут для с3p0-->
+        <property name="hibernate.c3p0.max_statements">100</property> <!--Number of prepared statements will be cached. Increase performance. Hibernate default: 0 , caching is disable.-->
+        <property name="hibernate.c3p0.idle_test_period">300</property><!--как долго ждать, чтобы подтвердить соединение, т.е. не закрывать его, а, например, сделать запрос "select 1"-->
+
+        <property name="hibernate.generate_statistics">false</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
+    </session-factory>
+</hibernate-configuration>
