@@ -16,16 +16,16 @@ repositories {
 
 dependencies {
 
-    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'org.hibernate:hibernate-core:5.2.2.Final'
     compile 'org.hibernate:hibernate-validator:5.2.4.Final'
-    compile 'javax.el:javax.el-api:2.2.5' //Нужна для hibernate-validator
+    compile 'javax.el:javax.el-api:3.0.0' //Нужна для hibernate-validator
 
-    compile 'org.hibernate:hibernate-ehcache:5.1.0.Final'
+    compile 'org.hibernate:hibernate-ehcache:5.2.2.Final'
 
-    compile 'org.hibernate:hibernate-c3p0:5.1.0.Final' //Промышленный пул коннектов
+    compile 'org.hibernate:hibernate-c3p0:5.2.2.Final' //Промышленный пул коннектов
     compile 'com.mchange:c3p0:0.9.5.2' //Нужна более новая зависимость для hibernate-c3p0 (иначе ломается LongArrayUserType)
 
-    testCompile 'junit:junit:4.11'
-    testCompile 'org.hsqldb:hsqldb:2.3.3'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hsqldb:hsqldb:2.3.4'
 }
 

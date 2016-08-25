@@ -1,7 +1,7 @@
 package org.herbst.ndao.usertype.enums.uid;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
 import java.io.Serializable;
@@ -51,7 +51,7 @@ public abstract class PersistentEnumUidUserType<T extends PersistentEnumUid> imp
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
+    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
         String uid = rs.getString(names[0]);
         if(rs.wasNull()) {
             return null;
@@ -65,7 +65,7 @@ public abstract class PersistentEnumUidUserType<T extends PersistentEnumUid> imp
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index,SessionImplementor sessionImplementor) throws HibernateException, SQLException {
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
         if (value == null) {
             st.setNull(index, Types.VARCHAR);
         } else {
