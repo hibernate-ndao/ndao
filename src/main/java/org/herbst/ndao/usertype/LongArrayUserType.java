@@ -1,7 +1,7 @@
 package org.herbst.ndao.usertype;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ public class LongArrayUserType implements UserType {
      * Восстанавливает значение поля при чтении из базы.
      */
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
+    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
         Array array = rs.getArray(names[0]);
         Object[] javaArray = (Object[]) array.getArray();
 
@@ -31,7 +31,7 @@ public class LongArrayUserType implements UserType {
      * Кодирует значение поля для записи в базу.
      */
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException {
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
         Connection connection = st.getConnection();
         long[] castObject = (long[]) value;
 
