@@ -286,4 +286,7 @@ public class Database {
 		return sessionFactory.getCache();
 	}
 
+	public void destroy(){
+		sessionFactory.close();
+	}
 }
