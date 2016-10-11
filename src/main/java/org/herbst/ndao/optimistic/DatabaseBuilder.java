@@ -11,6 +11,7 @@ public class DatabaseBuilder {
     private Configuration configuration;
 
     private String driverClass;
+    private String resource;
 
     public DatabaseBuilder() {
         configuration = new Configuration();
@@ -48,6 +49,11 @@ public class DatabaseBuilder {
         return this;
     }
 
+    public DatabaseBuilder withResource(String resource) {
+        this.resource=resource;
+        return this;
+    }
+
     public Configuration getHibernateConfiguration() {
         return configuration;
     }
@@ -59,7 +65,11 @@ public class DatabaseBuilder {
         }
 
         //Конфигурируем
-        configuration.configure();
+        if (resource!=null) {
+            configuration.configure(resource);
+        } else {
+            configuration.configure();
+        }
 
         return new Database(configuration);
     }
