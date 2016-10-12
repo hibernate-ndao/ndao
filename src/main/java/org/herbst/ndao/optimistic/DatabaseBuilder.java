@@ -3,6 +3,8 @@ package org.herbst.ndao.optimistic;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Configuration;
 
+import java.net.URL;
+
 /**
  * Created by kris on 23.08.16.
  */
@@ -11,7 +13,9 @@ public class DatabaseBuilder {
     private Configuration configuration;
 
     private String driverClass;
-    private String resource;
+
+    private String resourceStr;
+    private URL resourceURL;
 
     public DatabaseBuilder() {
         configuration = new Configuration();
@@ -50,7 +54,12 @@ public class DatabaseBuilder {
     }
 
     public DatabaseBuilder withResource(String resource) {
-        this.resource=resource;
+        this.resourceStr=resource;
+        return this;
+    }
+
+    public DatabaseBuilder withResource(URL resource) {
+        this.resourceURL=resource;
         return this;
     }
 
@@ -65,8 +74,10 @@ public class DatabaseBuilder {
         }
 
         //Конфигурируем
-        if (resource!=null) {
-            configuration.configure(resource);
+        if (resourceURL!=null) {
+            configuration.configure(resourceURL);
+        } else if (resourceStr!=null) {
+            configuration.configure(resourceStr);
         } else {
             configuration.configure();
         }
