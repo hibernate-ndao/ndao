@@ -1,5 +1,5 @@
 group 'org.herbst'
-version '1.4'
+version '1.5'
 
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -16,14 +16,14 @@ repositories {
 
 dependencies {
 
-    compile 'org.hibernate:hibernate-core:5.2.3.Final'
-    compile 'org.hibernate:hibernate-validator:5.2.4.Final'
+    compile 'org.hibernate:hibernate-core:5.2.4.Final'
+    compile 'org.hibernate:hibernate-validator:5.3.2.Final'
     compile 'javax.el:javax.el-api:3.0.0' //Нужна для hibernate-validator
 
-    compile 'org.hibernate:hibernate-ehcache:5.2.3.Final'
+    compile 'org.hibernate:hibernate-ehcache:5.2.4.Final'
 
-    compile 'org.hibernate:hibernate-c3p0:5.2.3.Final' //Промышленный пул коннектов
-    compile 'com.mchange:c3p0:0.9.5.2' //Нужна более новая зависимость для hibernate-c3p0 (иначе ломается LongArrayUserType)
+    compile 'org.hibernate:hibernate-c3p0:5.2.4.Final' //Промышленный пул коннектов
+    compile 'com.mchange:c3p0:0.9.5.1' //Нужна более новая зависимость для hibernate-c3p0 (иначе ломается LongArrayUserType)
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hsqldb:hsqldb:2.3.4'
