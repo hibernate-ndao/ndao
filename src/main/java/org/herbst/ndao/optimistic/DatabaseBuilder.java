@@ -67,6 +67,10 @@ public class DatabaseBuilder {
         return configuration;
     }
 
+    public String getDriverClass() {
+        return driverClass;
+    }
+
     public Database build() throws ClassNotFoundException, HibernateException {
         //Загружаем драйвер
         if (driverClass!=null) {
